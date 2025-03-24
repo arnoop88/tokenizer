@@ -1,10 +1,148 @@
-// Sources flattened with hardhat v2.22.19 https://hardhat.org
-
 // SPDX-License-Identifier: MIT
+// File: @openzeppelin/contracts/token/ERC20/IERC20.sol
 
-// File @openzeppelin/contracts/interfaces/draft-IERC6093.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
+// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/IERC20.sol)
+
+pragma solidity ^0.8.20;
+
+/**
+ * @dev Interface of the ERC-20 standard as defined in the ERC.
+ */
+interface IERC20 {
+    /**
+     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    /**
+     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+     * a call to {approve}. `value` is the new allowance.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    /**
+     * @dev Returns the value of tokens in existence.
+     */
+    function totalSupply() external view returns (uint256);
+
+    /**
+     * @dev Returns the value of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+    /**
+     * @dev Moves a `value` amount of tokens from the caller's account to `to`.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address to, uint256 value) external returns (bool);
+
+    /**
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
+     *
+     * This value changes when {approve} or {transferFrom} are called.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    /**
+     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
+     * caller's tokens.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+     * that someone may use both the old and the new allowance by unfortunate
+     * transaction ordering. One possible solution to mitigate this race
+     * condition is to first reduce the spender's allowance to 0 and set the
+     * desired value afterwards:
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 value) external returns (bool);
+
+    /**
+     * @dev Moves a `value` amount of tokens from `from` to `to` using the
+     * allowance mechanism. `value` is then deducted from the caller's
+     * allowance.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
+}
+
+// File: @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol
+
+
+// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/extensions/IERC20Metadata.sol)
+
+pragma solidity ^0.8.20;
+
+
+/**
+ * @dev Interface for the optional metadata functions from the ERC-20 standard.
+ */
+interface IERC20Metadata is IERC20 {
+    /**
+     * @dev Returns the name of the token.
+     */
+    function name() external view returns (string memory);
+
+    /**
+     * @dev Returns the symbol of the token.
+     */
+    function symbol() external view returns (string memory);
+
+    /**
+     * @dev Returns the decimals places of the token.
+     */
+    function decimals() external view returns (uint8);
+}
+
+// File: @openzeppelin/contracts/utils/Context.sol
+
+
+// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)
+
+pragma solidity ^0.8.20;
+
+/**
+ * @dev Provides information about the current execution context, including the
+ * sender of the transaction and its data. While these are generally available
+ * via msg.sender and msg.data, they should not be accessed in such a direct
+ * manner, since when dealing with meta-transactions the account sending and
+ * paying for execution may not be the actual sender (as far as an application
+ * is concerned).
+ *
+ * This contract is only required for intermediate, library-like contracts.
+ */
+abstract contract Context {
+    function _msgSender() internal view virtual returns (address) {
+        return msg.sender;
+    }
+
+    function _msgData() internal view virtual returns (bytes calldata) {
+        return msg.data;
+    }
+
+    function _contextSuffixLength() internal view virtual returns (uint256) {
+        return 0;
+    }
+}
+
+// File: @openzeppelin/contracts/interfaces/draft-IERC6093.sol
+
+
 // OpenZeppelin Contracts (last updated v5.1.0) (interfaces/draft-IERC6093.sol)
 pragma solidity ^0.8.20;
 
@@ -166,156 +304,13 @@ interface IERC1155Errors {
     error ERC1155InvalidArrayLength(uint256 idsLength, uint256 valuesLength);
 }
 
-
-// File @openzeppelin/contracts/token/ERC20/IERC20.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/IERC20.sol)
-
-pragma solidity ^0.8.20;
-
-/**
- * @dev Interface of the ERC-20 standard as defined in the ERC.
- */
-interface IERC20 {
-    /**
-     * @dev Emitted when `value` tokens are moved from one account (`from`) to
-     * another (`to`).
-     *
-     * Note that `value` may be zero.
-     */
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    /**
-     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
-     * a call to {approve}. `value` is the new allowance.
-     */
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-
-    /**
-     * @dev Returns the value of tokens in existence.
-     */
-    function totalSupply() external view returns (uint256);
-
-    /**
-     * @dev Returns the value of tokens owned by `account`.
-     */
-    function balanceOf(address account) external view returns (uint256);
-
-    /**
-     * @dev Moves a `value` amount of tokens from the caller's account to `to`.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transfer(address to, uint256 value) external returns (bool);
-
-    /**
-     * @dev Returns the remaining number of tokens that `spender` will be
-     * allowed to spend on behalf of `owner` through {transferFrom}. This is
-     * zero by default.
-     *
-     * This value changes when {approve} or {transferFrom} are called.
-     */
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    /**
-     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
-     * caller's tokens.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * IMPORTANT: Beware that changing an allowance with this method brings the risk
-     * that someone may use both the old and the new allowance by unfortunate
-     * transaction ordering. One possible solution to mitigate this race
-     * condition is to first reduce the spender's allowance to 0 and set the
-     * desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     *
-     * Emits an {Approval} event.
-     */
-    function approve(address spender, uint256 value) external returns (bool);
-
-    /**
-     * @dev Moves a `value` amount of tokens from `from` to `to` using the
-     * allowance mechanism. `value` is then deducted from the caller's
-     * allowance.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transferFrom(address from, address to, uint256 value) external returns (bool);
-}
+// File: @openzeppelin/contracts/token/ERC20/ERC20.sol
 
 
-// File @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/extensions/IERC20Metadata.sol)
-
-pragma solidity ^0.8.20;
-
-/**
- * @dev Interface for the optional metadata functions from the ERC-20 standard.
- */
-interface IERC20Metadata is IERC20 {
-    /**
-     * @dev Returns the name of the token.
-     */
-    function name() external view returns (string memory);
-
-    /**
-     * @dev Returns the symbol of the token.
-     */
-    function symbol() external view returns (string memory);
-
-    /**
-     * @dev Returns the decimals places of the token.
-     */
-    function decimals() external view returns (uint8);
-}
-
-
-// File @openzeppelin/contracts/utils/Context.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)
-
-pragma solidity ^0.8.20;
-
-/**
- * @dev Provides information about the current execution context, including the
- * sender of the transaction and its data. While these are generally available
- * via msg.sender and msg.data, they should not be accessed in such a direct
- * manner, since when dealing with meta-transactions the account sending and
- * paying for execution may not be the actual sender (as far as an application
- * is concerned).
- *
- * This contract is only required for intermediate, library-like contracts.
- */
-abstract contract Context {
-    function _msgSender() internal view virtual returns (address) {
-        return msg.sender;
-    }
-
-    function _msgData() internal view virtual returns (bytes calldata) {
-        return msg.data;
-    }
-
-    function _contextSuffixLength() internal view virtual returns (uint256) {
-        return 0;
-    }
-}
-
-
-// File @openzeppelin/contracts/token/ERC20/ERC20.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.2.0) (token/ERC20/ERC20.sol)
 
 pragma solidity ^0.8.20;
+
 
 
 
@@ -623,10 +618,9 @@ abstract contract ERC20 is Context, IERC20, IERC20Metadata, IERC20Errors {
     }
 }
 
+// File: @openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol
 
-// File @openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/extensions/IERC20Permit.sol)
 
 pragma solidity ^0.8.20;
@@ -717,10 +711,9 @@ interface IERC20Permit {
     function DOMAIN_SEPARATOR() external view returns (bytes32);
 }
 
+// File: @openzeppelin/contracts/utils/cryptography/ECDSA.sol
 
-// File @openzeppelin/contracts/utils/cryptography/ECDSA.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/cryptography/ECDSA.sol)
 
 pragma solidity ^0.8.20;
@@ -901,42 +894,69 @@ library ECDSA {
     }
 }
 
+// File: @openzeppelin/contracts/utils/Panic.sol
 
-// File @openzeppelin/contracts/interfaces/IERC5267.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v5.0.0) (interfaces/IERC5267.sol)
+// OpenZeppelin Contracts (last updated v5.1.0) (utils/Panic.sol)
 
 pragma solidity ^0.8.20;
 
-interface IERC5267 {
-    /**
-     * @dev MAY be emitted to signal that the domain could have changed.
-     */
-    event EIP712DomainChanged();
+/**
+ * @dev Helper library for emitting standardized panic codes.
+ *
+ * ```solidity
+ * contract Example {
+ *      using Panic for uint256;
+ *
+ *      // Use any of the declared internal constants
+ *      function foo() { Panic.GENERIC.panic(); }
+ *
+ *      // Alternatively
+ *      function foo() { Panic.panic(Panic.GENERIC); }
+ * }
+ * ```
+ *
+ * Follows the list from https://github.com/ethereum/solidity/blob/v0.8.24/libsolutil/ErrorCodes.h[libsolutil].
+ *
+ * _Available since v5.1._
+ */
+// slither-disable-next-line unused-state
+library Panic {
+    /// @dev generic / unspecified error
+    uint256 internal constant GENERIC = 0x00;
+    /// @dev used by the assert() builtin
+    uint256 internal constant ASSERT = 0x01;
+    /// @dev arithmetic underflow or overflow
+    uint256 internal constant UNDER_OVERFLOW = 0x11;
+    /// @dev division or modulo by zero
+    uint256 internal constant DIVISION_BY_ZERO = 0x12;
+    /// @dev enum conversion error
+    uint256 internal constant ENUM_CONVERSION_ERROR = 0x21;
+    /// @dev invalid encoding in storage
+    uint256 internal constant STORAGE_ENCODING_ERROR = 0x22;
+    /// @dev empty array pop
+    uint256 internal constant EMPTY_ARRAY_POP = 0x31;
+    /// @dev array out of bounds access
+    uint256 internal constant ARRAY_OUT_OF_BOUNDS = 0x32;
+    /// @dev resource error (too large allocation or too large array)
+    uint256 internal constant RESOURCE_ERROR = 0x41;
+    /// @dev calling invalid internal function
+    uint256 internal constant INVALID_INTERNAL_FUNCTION = 0x51;
 
-    /**
-     * @dev returns the fields and values that describe the domain separator used by this contract for EIP-712
-     * signature.
-     */
-    function eip712Domain()
-        external
-        view
-        returns (
-            bytes1 fields,
-            string memory name,
-            string memory version,
-            uint256 chainId,
-            address verifyingContract,
-            bytes32 salt,
-            uint256[] memory extensions
-        );
+    /// @dev Reverts with a panic code. Recommended to use with
+    /// the internal constants with predefined codes.
+    function panic(uint256 code) internal pure {
+        assembly ("memory-safe") {
+            mstore(0x00, 0x4e487b71)
+            mstore(0x20, code)
+            revert(0x1c, 0x24)
+        }
+    }
 }
 
+// File: @openzeppelin/contracts/utils/math/SafeCast.sol
 
-// File @openzeppelin/contracts/utils/math/SafeCast.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/math/SafeCast.sol)
 // This file was procedurally generated from scripts/generate/templates/SafeCast.js.
 
@@ -2099,74 +2119,13 @@ library SafeCast {
     }
 }
 
-
-// File @openzeppelin/contracts/utils/Panic.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v5.1.0) (utils/Panic.sol)
-
-pragma solidity ^0.8.20;
-
-/**
- * @dev Helper library for emitting standardized panic codes.
- *
- * ```solidity
- * contract Example {
- *      using Panic for uint256;
- *
- *      // Use any of the declared internal constants
- *      function foo() { Panic.GENERIC.panic(); }
- *
- *      // Alternatively
- *      function foo() { Panic.panic(Panic.GENERIC); }
- * }
- * ```
- *
- * Follows the list from https://github.com/ethereum/solidity/blob/v0.8.24/libsolutil/ErrorCodes.h[libsolutil].
- *
- * _Available since v5.1._
- */
-// slither-disable-next-line unused-state
-library Panic {
-    /// @dev generic / unspecified error
-    uint256 internal constant GENERIC = 0x00;
-    /// @dev used by the assert() builtin
-    uint256 internal constant ASSERT = 0x01;
-    /// @dev arithmetic underflow or overflow
-    uint256 internal constant UNDER_OVERFLOW = 0x11;
-    /// @dev division or modulo by zero
-    uint256 internal constant DIVISION_BY_ZERO = 0x12;
-    /// @dev enum conversion error
-    uint256 internal constant ENUM_CONVERSION_ERROR = 0x21;
-    /// @dev invalid encoding in storage
-    uint256 internal constant STORAGE_ENCODING_ERROR = 0x22;
-    /// @dev empty array pop
-    uint256 internal constant EMPTY_ARRAY_POP = 0x31;
-    /// @dev array out of bounds access
-    uint256 internal constant ARRAY_OUT_OF_BOUNDS = 0x32;
-    /// @dev resource error (too large allocation or too large array)
-    uint256 internal constant RESOURCE_ERROR = 0x41;
-    /// @dev calling invalid internal function
-    uint256 internal constant INVALID_INTERNAL_FUNCTION = 0x51;
-
-    /// @dev Reverts with a panic code. Recommended to use with
-    /// the internal constants with predefined codes.
-    function panic(uint256 code) internal pure {
-        assembly ("memory-safe") {
-            mstore(0x00, 0x4e487b71)
-            mstore(0x20, code)
-            revert(0x1c, 0x24)
-        }
-    }
-}
+// File: @openzeppelin/contracts/utils/math/Math.sol
 
 
-// File @openzeppelin/contracts/utils/math/Math.sol@v5.2.0
-
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/math/Math.sol)
 
 pragma solidity ^0.8.20;
+
 
 
 /**
@@ -2847,13 +2806,13 @@ library Math {
     }
 }
 
+// File: @openzeppelin/contracts/utils/math/SignedMath.sol
 
-// File @openzeppelin/contracts/utils/math/SignedMath.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/math/SignedMath.sol)
 
 pragma solidity ^0.8.20;
+
 
 /**
  * @dev Standard signed math utilities missing in the Solidity language.
@@ -2917,13 +2876,13 @@ library SignedMath {
     }
 }
 
+// File: @openzeppelin/contracts/utils/Strings.sol
 
-// File @openzeppelin/contracts/utils/Strings.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.2.0) (utils/Strings.sol)
 
 pragma solidity ^0.8.20;
+
 
 
 
@@ -3360,13 +3319,13 @@ library Strings {
     }
 }
 
+// File: @openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol
 
-// File @openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/cryptography/MessageHashUtils.sol)
 
 pragma solidity ^0.8.20;
+
 
 /**
  * @dev Signature message hash utilities for producing digests to be consumed by {ECDSA} recovery or signing.
@@ -3446,10 +3405,9 @@ library MessageHashUtils {
     }
 }
 
+// File: @openzeppelin/contracts/utils/StorageSlot.sol
 
-// File @openzeppelin/contracts/utils/StorageSlot.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/StorageSlot.sol)
 // This file was procedurally generated from scripts/generate/templates/StorageSlot.js.
 
@@ -3593,13 +3551,13 @@ library StorageSlot {
     }
 }
 
+// File: @openzeppelin/contracts/utils/ShortStrings.sol
 
-// File @openzeppelin/contracts/utils/ShortStrings.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/ShortStrings.sol)
 
 pragma solidity ^0.8.20;
+
 
 // | string  | 0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   |
 // | length  | 0x                                                              BB |
@@ -3717,13 +3675,44 @@ library ShortStrings {
     }
 }
 
+// File: @openzeppelin/contracts/interfaces/IERC5267.sol
 
-// File @openzeppelin/contracts/utils/cryptography/EIP712.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
+// OpenZeppelin Contracts (last updated v5.0.0) (interfaces/IERC5267.sol)
+
+pragma solidity ^0.8.20;
+
+interface IERC5267 {
+    /**
+     * @dev MAY be emitted to signal that the domain could have changed.
+     */
+    event EIP712DomainChanged();
+
+    /**
+     * @dev returns the fields and values that describe the domain separator used by this contract for EIP-712
+     * signature.
+     */
+    function eip712Domain()
+        external
+        view
+        returns (
+            bytes1 fields,
+            string memory name,
+            string memory version,
+            uint256 chainId,
+            address verifyingContract,
+            bytes32 salt,
+            uint256[] memory extensions
+        );
+}
+
+// File: @openzeppelin/contracts/utils/cryptography/EIP712.sol
+
+
 // OpenZeppelin Contracts (last updated v5.1.0) (utils/cryptography/EIP712.sol)
 
 pragma solidity ^0.8.20;
+
 
 
 
@@ -3879,10 +3868,9 @@ abstract contract EIP712 is IERC5267 {
     }
 }
 
+// File: @openzeppelin/contracts/utils/Nonces.sol
 
-// File @openzeppelin/contracts/utils/Nonces.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (utils/Nonces.sol)
 pragma solidity ^0.8.20;
 
@@ -3929,13 +3917,13 @@ abstract contract Nonces {
     }
 }
 
+// File: @openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol
 
-// File @openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol@v5.2.0
 
-// Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.1.0) (token/ERC20/extensions/ERC20Permit.sol)
 
 pragma solidity ^0.8.20;
+
 
 
 
@@ -4014,11 +4002,11 @@ abstract contract ERC20Permit is ERC20, IERC20Permit, EIP712, Nonces {
     }
 }
 
+// File: contracts/42Coin.sol
 
-// File 42Coin.sol
 
-// Original license: SPDX_License_Identifier: MIT
 pragma solidity ^0.8.20;
+
 
 
 contract Coin42 is ERC20, ERC20Permit  {

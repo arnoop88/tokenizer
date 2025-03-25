@@ -27,6 +27,6 @@ This project creates a decentralized, fixed-supply token for the 42 community. K
 ---
 
 ### Deployment Details  
-- **Network**: BNB Smart Chain Testnet (later upgradable to Mainnet).  
+- **Network**: BNB Smart Chain Testnet.  
 - **Contract Address**: [`0x2Bf4f83B77F147811a6dB52A4210257F46B0c79C`](https://testnet.bscscan.com/address/0x2Bf4f83B77F147811a6dB52A4210257F46B0c79C)  
 - **Explorer**: Verified on BscScan for public transparency.

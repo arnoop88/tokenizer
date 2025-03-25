@@ -1,0 +1,1 @@
+await hre.run("verify:verify", { address: "0x2Bf4f83B77F147811a6dB52A4210257F46B0c79C" });

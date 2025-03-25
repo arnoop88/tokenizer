@@ -33,8 +33,8 @@ This project creates a decentralized, fixed-supply token for the 42 community. K
 
 ## 🚀 Deployment Details
 - **Network**: BNB Smart Chain Testnet.
-- **42Coin Contract Address**: [`0x18a6BDA73e35B297D2F4a455A13e7D8AD3A24848`](https://testnet.bscscan.com/address/0x18a6BDA73e35B297D2F4a455A13e7D8AD3A24848)
-- **Multisig Wallet Address**: [`0x9df83865208a45b89181ec293ac0b6304875df08`](https://testnet.bscscan.com/address/0x9df83865208a45b89181ec293ac0b6304875df08)
+- **42Coin Contract Address**: [0x18a6BDA73e35B297D2F4a455A13e7D8AD3A24848](https://testnet.bscscan.com/address/0x18a6BDA73e35B297D2F4a455A13e7D8AD3A24848)
+- **Multisig Wallet Address**: [0x9df83865208a45b89181ec293ac0b6304875df08](https://testnet.bscscan.com/address/0x9df83865208a45b89181ec293ac0b6304875df08)
 - **Explorer**: Both contracts verified on BscScan for public transparency.
 
 ---

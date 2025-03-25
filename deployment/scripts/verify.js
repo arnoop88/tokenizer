@@ -1,1 +1,32 @@
-await hre.run("verify:verify", { address: "0x2Bf4f83B77F147811a6dB52A4210257F46B0c79C" });
+const { run } = require("hardhat");
+
+async function verify(address, constructorArguments) {
+  try {
+    await run("verify:verify", { address, constructorArguments });
+  } catch (error) {
+    if (error.message.includes("Already Verified")) {
+      console.log("Already verified!");
+    } else {
+      console.error(error);
+    }
+  }
+}
+
+async function main() {
+  // Verify MultisigWallet
+  await verify(
+    process.env.MULTISIG_ADDRESS,
+    [
+      process.env.MULTISIG_OWNERS.split(","), 
+      parseInt(process.env.MULTISIG_THRESHOLD)
+    ]
+  );
+
+  // Verify 42Coin
+  await verify(
+    process.env.TOKEN_ADDRESS,
+    [process.env.MULTISIG_ADDRESS]
+  );
+}
+
+main();

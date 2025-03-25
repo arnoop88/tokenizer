@@ -4013,11 +4013,11 @@ contract Coin42 is ERC20, ERC20Permit  {
     // Fixed supply: 42,000,000 tokens (42M * 10^18 units)
     uint256 private constant TOTAL_SUPPLY = 42_000_000 * 10 ** 18;
 
-    constructor()
+    constructor(address multisigAddress)
         ERC20("42Coin", "42C")
         ERC20Permit("42Coin")
     {
-        _mint(msg.sender, TOTAL_SUPPLY); // Mint all tokens to deployer
+        _mint(multisigAddress, TOTAL_SUPPLY); // Mint all tokens to multisig wallet
     }
 
     // No mint() or burn() functions! 🔒

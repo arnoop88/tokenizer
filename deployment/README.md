@@ -18,6 +18,8 @@ npx hardhat run scripts/deploy.js --network bscTestnet
 npx hardhat run scripts/verify.js --network bscTestnet
 ```
 
+---
+
 ## 🌐 Remix IDE
 
 ### 1. Prepare Contracts

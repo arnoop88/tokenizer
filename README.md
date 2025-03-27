@@ -7,7 +7,7 @@ This project creates a decentralized, fixed-supply token for the 42 community. K
 ## 🔍 Design Choices & Rationale
 ### 1. **Blockchain Platform: BNB Smart Chain**
   - **Partnership Alignment**: The project is a collaboration between 42 and BNB Chain, making BSC the natural choice.
-  - **Cost Efficiency**: BSC offers lower transaction fees (~$0.05) compared to Ethereum (~$5), ideal for testing and mass adoption.
+  - **Cost Efficiency**: BSC offers lower transaction fees (\~$0.05) compared to Ethereum (\~$5), ideal for testing and mass adoption.
   - **EVM Compatibility**: Seamless integration with Ethereum tools (MetaMask, Remix, Hardhat).
 
 ### 2. **Token Standard: ERC-20 with ERC20Permit**
